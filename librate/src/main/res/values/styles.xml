@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Custom_Dialog" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="windowMinWidthMajor">100%</item>
+        <item name="windowMinWidthMinor">100%</item>
+    </style>
+
+    
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#BDC3CC</item>
+        <item name="colorControlActivated">@color/rate</item>
+    </style>
+</resources>

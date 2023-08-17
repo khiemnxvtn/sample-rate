@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="we_are_working_hard_for_a_better_user_experience">We are working hard for a better user experience.</string>
+    <string name="we_d_greatly_appreciate_if_you_can_rate_us">We’d greatly appreciate if you can rate us.</string>
+    <string name="may_be_later">Maybe later</string>
+    <string name="rate">Rate</string>
+    <string name="msg_dialog_exit">Are you sure you want to exit?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+</resources>
