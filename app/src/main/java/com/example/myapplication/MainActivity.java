@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBackgroundStar(R.drawable.border_bg_star)
                 .setColorRatingBar("#FAFF00")
                 .setColorRatingBarBG("#E0E0E0")
+                .setTextNotNowSize(12)
                 .setNumberRateInApp(5)
                 .setFontFamily(ResourcesCompat.getFont(this, R.font.poppins_regular))
                 .setFontFamilyTitle(ResourcesCompat.getFont(this, R.font.poppins_semibold))

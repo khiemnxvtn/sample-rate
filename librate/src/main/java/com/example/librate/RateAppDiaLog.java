@@ -94,6 +94,12 @@ public class RateAppDiaLog extends Dialog {
         if (builder.titleSize != 0) {
             tvTitle.setTextSize(builder.titleSize);
         }
+        if (builder.rateNowSize != 0) {
+            btnRate.setTextSize(builder.rateNowSize);
+        }
+        if (builder.notNowSize != 0) {
+            btnNotnow.setTextSize(builder.notNowSize);
+        }
         if (builder.notNow != null && builder.rateUs != null) {
             btnRate.setText(builder.rateUs);
             btnNotnow.setText(builder.notNow);
@@ -253,7 +259,7 @@ public class RateAppDiaLog extends Dialog {
         private String title, content, rateUs, notNow;
         private int titleColor = 0, contentColor = 0, rateUsDra, rateUsColor = 0, notNowColor = 0;
         private String colorStart, colorEnd;
-        private int titleSize = 0, contentSize = 0;
+        private int titleSize = 0, contentSize = 0 , rateNowSize = 0 , notNowSize = 0;
         private final Activity context;
         private int drawableRateUs = 0;
         private IClickBtn onClickBtn;
@@ -330,6 +336,16 @@ public class RateAppDiaLog extends Dialog {
 
         public Builder setTextContentSize(int contentSize) {
             this.contentSize = contentSize;
+            return this;
+        }
+
+        public Builder setTextRateSize(int rateSize) {
+            this.rateNowSize= rateSize;
+            return this;
+        }
+
+        public Builder setTextNotNowSize(int notNSize) {
+            this.notNowSize= notNSize;
             return this;
         }
 

@@ -83,7 +83,7 @@
                 android:paddingVertical="10dp"
                 android:text="Not now"
                 android:textColor="#939393"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 />
         </LinearLayout>
         <RelativeLayout
