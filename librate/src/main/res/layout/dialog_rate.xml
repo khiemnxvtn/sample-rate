@@ -29,7 +29,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:gravity="center_horizontal"
                 android:text="Rate us"
-                android:textColor="@color/main"
+                android:textColor="@color/black"
                 android:textSize="28sp" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:gravity="center_horizontal"
                 android:lineHeight="19dp"
-                android:text="If you enjoy this Office Reader, would you mind rating us on the Google Play, then?"
+                android:text="Tap a star to set your rating"
                 android:textColor="#939393"
                 android:textSize="13sp" />
 
@@ -84,7 +84,7 @@
                 android:text="Not now"
                 android:textColor="#939393"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
         <RelativeLayout
             android:id="@+id/bg_star"
