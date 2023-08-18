@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -20,15 +21,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         RateAppDiaLog rateAppDiaLog = new RateAppDiaLog.Builder(this)
-                .setTextTitle("Your Opinion Matter To Us!")
-                .setTextContent("If you enjoy this Office Reader, would you mind rating us on the Google Play, then?")
-                .setTextButton("Rate us","Not now")
-                .setTextTitleColorLiner("#F47500","#FFBC3A")
+                .setArrStar(new int[]{R.drawable.ic_mstar_0,R.drawable.ic_mstar_1,R.drawable.ic_mstar_2,R.drawable.ic_mstar_3,R.drawable.ic_mstar_4,R.drawable.ic_mstar_5})
+                .setTextTitle("Rate us")
+                .setTextContent("Tap a star to set your rating")
+                .setTextButton("Rate now","Not now")
+                .setTextTitleColor(Color.parseColor("#000000"))
+                .setTextNotNowColor(Color.parseColor("#EDEDED"))
                 .setDrawableButtonRate(R.drawable.border_rate)
-                .setBackgroundDialog(R.drawable.border_rate)
-                .setColorRatingBar("#EC5656")
+                .setBackgroundDialog(R.drawable.border_bg_dialog)
+                .setBackgroundStar(R.drawable.border_bg_star)
+                .setColorRatingBar("#FAFF00")
+                .setColorRatingBarBG("#E0E0E0")
                 .setNumberRateInApp(5)
-                .setFontFamily(ResourcesCompat.getFont(this, R.font.xxx))
+                .setFontFamily(ResourcesCompat.getFont(this, R.font.poppins_regular))
+                .setFontFamilyTitle(ResourcesCompat.getFont(this, R.font.poppins_semibold))
                 .setOnclickBtn(new IClickBtn() {
                     @Override
                     public void onclickNotNow() {
