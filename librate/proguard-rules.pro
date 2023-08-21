@@ -22,3 +22,6 @@
 -keep class com.example.librate.RateBuilder {
     *;
 }
+-keep interface com.example.librate.callback.IClickBtn {
+    *;
+}
