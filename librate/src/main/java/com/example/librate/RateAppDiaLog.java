@@ -8,7 +8,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextPaint;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatRatingBar;
 
-import com.example.librate.callback.IClickBtn;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
@@ -32,7 +30,8 @@ import com.google.android.play.core.tasks.Task;
 
 public class RateAppDiaLog extends Dialog {
     private TextView tvTitle, tvContent, btnRate, btnNotnow;
-    private Builder builder;
+
+    private RateBuilder builder;
     private Context context;
     private ImageView imgRate;
     private AppCompatRatingBar rtb;
@@ -41,8 +40,9 @@ public class RateAppDiaLog extends Dialog {
 
     private boolean isZoomedIn = false;
 
+    
 
-    public RateAppDiaLog(Activity context, Builder builder) {
+    public RateAppDiaLog(Activity context, RateBuilder builder) {
         super(context);
         this.context = context;
         this.builder = builder;
@@ -67,83 +67,83 @@ public class RateAppDiaLog extends Dialog {
         btnNotnow = findViewById(R.id.btnNotnow);
         dialog = findViewById(R.id.dialog);
         bg_star = findViewById(R.id.bg_star);
-        if (builder.title != null)
-            tvTitle.setText(builder.title);
-        if (builder.content != null)
-            tvContent.setText(builder.content);
-        if (builder.titleColor != 0)
-            tvTitle.setTextColor(builder.titleColor);
-        if (builder.contentColor != 0)
-            tvContent.setTextColor(builder.contentColor);
-        if (builder.rateUsColor != 0) {
-            btnRate.setTextColor(builder.rateUsColor);
+        if (builder.getTitle() != null)
+            tvTitle.setText(builder.getTitle());
+        if (builder.getContext() != null)
+            tvContent.setText(builder.getContent());
+        if (builder.getTitleColor() != 0)
+            tvTitle.setTextColor(builder.getTitleColor());
+        if (builder.getContentColor() != 0)
+            tvContent.setTextColor(builder.getContentColor());
+        if (builder.getRateUsColor() != 0) {
+            btnRate.setTextColor(builder.getRateUsColor());
         }
-        if (builder.notNowColor != 0) {
-            btnNotnow.setTextColor(builder.notNowColor);
+        if (builder.getNotNowColor() != 0) {
+            btnNotnow.setTextColor(builder.getNotNowColor());
         }
 
-        if (builder.colorStart != null && builder.colorEnd != null) {
+        if (builder.getColorStart() != null && builder.getColorEnd() != null) {
             TextPaint paint = tvTitle.getPaint();
             float width = paint.measureText(tvTitle.getText().toString());
-            Shader textShader = new LinearGradient(0, 0, width, tvTitle.getTextSize(), new int[]{Color.parseColor(builder.colorStart),
-                    Color.parseColor(builder.colorEnd),}, null, Shader.TileMode.CLAMP);
+            Shader textShader = new LinearGradient(0, 0, width, tvTitle.getTextSize(), new int[]{Color.parseColor(builder.getColorStart()),
+                    Color.parseColor(builder.getColorEnd()),}, null, Shader.TileMode.CLAMP);
             tvTitle.getPaint().setShader(textShader);
         }
 
 
-        if (builder.titleSize != 0) {
-            tvTitle.setTextSize(builder.titleSize);
+        if (builder.getTitleSize() != 0) {
+            tvTitle.setTextSize(builder.getTitleSize());
         }
-        if (builder.rateNowSize != 0) {
-            btnRate.setTextSize(builder.rateNowSize);
+        if (builder.getRateNowSize() != 0) {
+            btnRate.setTextSize(builder.getRateNowSize());
         }
-        if (builder.notNowSize != 0) {
-            btnNotnow.setTextSize(builder.notNowSize);
+        if (builder.getNotNowSize() != 0) {
+            btnNotnow.setTextSize(builder.getNotNowSize());
         }
-        if (builder.notNow != null && builder.rateUs != null) {
-            btnRate.setText(builder.rateUs);
-            btnNotnow.setText(builder.notNow);
+        if (builder.getNotNow() != null && builder.getRateUs() != null) {
+            btnRate.setText(builder.getRateUs());
+            btnNotnow.setText(builder.getNotNow());
         }
-        if (builder.drawableRateUs != 0) {
-            btnRate.setBackgroundResource(builder.drawableRateUs);
+        if (builder.getDrawableRateUs() != 0) {
+            btnRate.setBackgroundResource(builder.getDrawableRateUs());
         }
-        if (builder.contentSize != 0) {
-            tvContent.setTextSize(builder.contentSize);
+        if (builder.getContentSize() != 0) {
+            tvContent.setTextSize(builder.getContentSize());
         }
-        if (builder.typeface != null) {
-            tvTitle.setTypeface(builder.typeface);
-            tvContent.setTypeface(builder.typeface);
-            btnRate.setTypeface(builder.typeface);
-            btnNotnow.setTypeface(builder.typeface);
+        if (builder.getTypeface() != null) {
+            tvTitle.setTypeface(builder.getTypeface());
+            tvContent.setTypeface(builder.getTypeface());
+            btnRate.setTypeface(builder.getTypeface());
+            btnNotnow.setTypeface(builder.getTypeface());
         }
-        if (builder.typefaceTitle != null) {
-            tvTitle.setTypeface(builder.typefaceTitle);
+        if (builder.getTypefaceTitle() != null) {
+            tvTitle.setTypeface(builder.getTypefaceTitle());
         }
-        if (builder.typefaceContent != null) {
-            tvContent.setTypeface(builder.typefaceContent);
+        if (builder.getTypefaceContent() != null) {
+            tvContent.setTypeface(builder.getTypefaceContent());
         }
-        if (builder.typefaceRateUs != null) {
-            btnRate.setTypeface(builder.typefaceRateUs);
+        if (builder.getTypefaceRateUs() != null) {
+            btnRate.setTypeface(builder.getTypefaceRateUs() );
         }
-        if (builder.typefaceNotNow != null) {
-            btnNotnow.setTypeface(builder.typefaceNotNow);
+        if (builder.getTypefaceNotNow() != null) {
+            btnNotnow.setTypeface(builder.getTypefaceNotNow());
         }
 
-        if (builder.drawableDialog != 0) {
-            dialog.setBackgroundResource(builder.drawableDialog);
+        if (builder.getDrawableDialog() != 0) {
+            dialog.setBackgroundResource(builder.getDrawableDialog());
         }
-        if (builder.drawableBgStar != 0) {
-            bg_star.setBackgroundResource(builder.drawableBgStar);
+        if (builder.getDrawableBgStar() != 0) {
+            bg_star.setBackgroundResource(builder.getDrawableBgStar());
         }
 
         btnNotnow.setOnClickListener(v -> {
-            builder.onClickBtn.onclickNotNow();
+            builder.getOnClickBtn().onclickNotNow();
             dismiss();
         });
         btnRate.setOnClickListener(v -> {
-            builder.onClickBtn.onClickRate(rtb.getRating());
-            if (rtb.getRating() >= builder.numberRateInApp) {
-                if (builder.isRateInApp) {
+            builder.getOnClickBtn().onClickRate(rtb.getRating());
+            if (rtb.getRating() >= builder.getNumberRateInApp()) {
+                if (builder.isRateInApp()) {
                     reviewApp(context);
                 } else {
                     dismiss();
@@ -158,13 +158,13 @@ public class RateAppDiaLog extends Dialog {
 
         changeRating();
 
-        if (builder.colorRatingBar != null)
-            rtb.setProgressTintList(ColorStateList.valueOf(Color.parseColor(builder.colorRatingBar)));
-        if (builder.colorRatingBarBg != null)
-            rtb.setProgressBackgroundTintList(ColorStateList.valueOf(Color.parseColor(builder.colorRatingBarBg)));
+        if (builder.getColorRatingBar() != null)
+            rtb.setProgressTintList(ColorStateList.valueOf(Color.parseColor(builder.getColorRatingBar())));
+        if (builder.getColorRatingBarBg() != null)
+            rtb.setProgressBackgroundTintList(ColorStateList.valueOf(Color.parseColor(builder.getColorRatingBarBg())));
 
-        if (builder.numberRateDefault > 0 && builder.numberRateDefault < 6) {
-            rtb.setRating(builder.numberRateDefault);
+        if (builder.getNumberRateDefault() > 0 && builder.getNumberRateDefault() < 6) {
+            rtb.setRating(builder.getNumberRateDefault());
         }
     }
 
@@ -176,7 +176,7 @@ public class RateAppDiaLog extends Dialog {
                         ReviewInfo reviewInfo = task.getResult();
                         Task<Void> flow = manager.launchReviewFlow(((Activity) context), reviewInfo);
                         flow.addOnCompleteListener(task2 -> {
-                            builder.onClickBtn.onReviewAppSuccess();
+                            builder.getOnClickBtn().onReviewAppSuccess();
                             dismiss();
                         });
                     } else {
@@ -194,23 +194,23 @@ public class RateAppDiaLog extends Dialog {
                 animationStar();
                 switch (getRating) {
                     case "1.0":
-                        imgRate.setImageResource(builder.arrStar[1]);
+                        imgRate.setImageResource(builder.getArrStar()[1]);
                         break;
                     case "2.0":
-                        imgRate.setImageResource(builder.arrStar[2]);
+                        imgRate.setImageResource(builder.getArrStar()[2]);
                         break;
                     case "3.0":
-                        imgRate.setImageResource(builder.arrStar[3]);
+                        imgRate.setImageResource(builder.getArrStar()[3]);
                         break;
                     case "4.0":
-                        imgRate.setImageResource(builder.arrStar[4]);
+                        imgRate.setImageResource(builder.getArrStar()[4]);
                         break;
                     case "5.0":
-                        imgRate.setImageResource(builder.arrStar[5]);
+                        imgRate.setImageResource(builder.getArrStar()[5]);
                         break;
                     default:
                         rtb.setRating(1f);
-                        imgRate.setImageResource(builder.arrStar[0]);
+                        imgRate.setImageResource(builder.getArrStar()[0]);
                         break;
                 }
             }
@@ -254,180 +254,5 @@ public class RateAppDiaLog extends Dialog {
 
         isZoomedIn = false;
     }
-
-    public static class Builder {
-        private String title, content, rateUs, notNow;
-        private int titleColor = 0, contentColor = 0, rateUsDra, rateUsColor = 0, notNowColor = 0;
-        private String colorStart, colorEnd;
-        private int titleSize = 0, contentSize = 0 , rateNowSize = 0 , notNowSize = 0;
-        private final Activity context;
-        private int drawableRateUs = 0;
-        private IClickBtn onClickBtn;
-        private boolean isExitApp = false;
-        private boolean isRateInApp = true;
-        private int numberRateInApp = 4;
-        private String colorRatingBar;
-        private String colorRatingBarBg;
-        private Typeface typeface = null;
-        private Typeface typefaceTitle = null;
-        private Typeface typefaceContent = null;
-        private Typeface typefaceRateUs = null;
-        private Typeface typefaceNotNow = null;
-        private int drawableDialog = 0;
-        private int drawableBgStar = 0;
-        private int numberRateDefault = 5;
-        private int[] arrStar = {R.drawable.ic_star_0, R.drawable.ic_star_1, R.drawable.ic_star_2, R.drawable.ic_star_3, R.drawable.ic_star_4, R.drawable.ic_star_5};
-
-        public Builder(Activity context) {
-            this.context = context;
-        }
-
-        public Builder setTextTitle(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder setTextContent(String content) {
-            this.content = content;
-            return this;
-        }
-
-        public Builder setTextButton(String rateUs, String notNow) {
-            this.rateUs = rateUs;
-            this.notNow = notNow;
-            return this;
-        }
-
-        public Builder setRateInApp(Boolean isRateInApp) {
-            this.isRateInApp = isRateInApp;
-            return this;
-        }
-
-        public Builder setTextTitleColorLiner(String colorStart, String colorEnd) {
-            this.colorStart = colorStart;
-            this.colorEnd = colorEnd;
-            return this;
-        }
-
-        public Builder setDrawableButtonRate(int drawable) {
-            this.drawableRateUs = drawable;
-            return this;
-        }
-
-        public Builder setTextTitleColor(int color) {
-            this.titleColor = color;
-            return this;
-        }
-
-        public Builder setTextRateUsColor(int color) {
-            this.rateUsColor = color;
-            return this;
-        }
-
-        public Builder setTextNotNowColor(int color) {
-            this.notNowColor = color;
-            return this;
-        }
-
-        public Builder setTextTitleSize(int titleSize) {
-            this.titleSize = titleSize;
-            return this;
-        }
-
-        public Builder setTextContentSize(int contentSize) {
-            this.contentSize = contentSize;
-            return this;
-        }
-
-        public Builder setTextRateSize(int rateSize) {
-            this.rateNowSize= rateSize;
-            return this;
-        }
-
-        public Builder setTextNotNowSize(int notNSize) {
-            this.notNowSize= notNSize;
-            return this;
-        }
-
-        public Builder setTextContentColor(int color) {
-            this.contentColor = color;
-            return this;
-        }
-
-        public Builder setColorRatingBar(String color) {
-            this.colorRatingBar = color;
-            return this;
-        }
-
-        public Builder setColorRatingBarBG(String color) {
-            this.colorRatingBarBg = color;
-            return this;
-        }
-
-        public Builder setOnclickBtn(IClickBtn onClickBtn) {
-            this.onClickBtn = onClickBtn;
-            return this;
-        }
-
-        /* public Builder setExitApp(Boolean isExitApp) {
-             this.isExitApp = isExitApp;
-             return this;
-         }*/
-        public Builder setNumberRateInApp(int numberRate) {
-            this.numberRateInApp = numberRate;
-            return this;
-        }
-
-        public Builder setFontFamily(Typeface typeface) {
-            this.typeface = typeface;
-            return this;
-        }
-
-        public Builder setFontFamilyTitle(Typeface typeface) {
-            this.typefaceTitle = typeface;
-            return this;
-        }
-
-        public Builder setFontFamilyContent(Typeface typeface) {
-            this.typefaceContent = typeface;
-            return this;
-        }
-
-        public Builder setFontFamilyRateUs(Typeface typeface) {
-            this.typefaceRateUs = typeface;
-            return this;
-        }
-
-        public Builder setFontFamilyNotNow(Typeface typeface) {
-            this.typefaceNotNow = typeface;
-            return this;
-        }
-
-        public Builder setBackgroundDialog(int drawable) {
-            this.drawableDialog = drawable;
-            return this;
-        }
-
-        public Builder setBackgroundStar(int drawable) {
-            this.drawableBgStar = drawable;
-            return this;
-        }
-
-        public Builder setNumberRateDefault(int number) {
-            this.numberRateDefault = number;
-            return this;
-        }
-
-        public Builder setArrStar(int[] arr) {
-            if (arr.length == arrStar.length) {
-                this.arrStar = arr;
-            }
-            return this;
-        }
-
-        public RateAppDiaLog build() {
-            return new RateAppDiaLog(context, this);
-        }
-
-    }
+    
 }
